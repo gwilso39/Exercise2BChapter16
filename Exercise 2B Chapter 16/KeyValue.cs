@@ -8,12 +8,12 @@ namespace Exercise_2B_Chapter_16
 {
     struct KeyValue
     {
-        public string key { get; }
-        public object value { get; }
+        public string Key { get; }
+        public object Value { get; }
 
-        private KeyValue(string key, object value)
+        KeyValue(string key, object value)
         {
-
+        
         }
     }
 }
