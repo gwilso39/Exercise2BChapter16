@@ -8,12 +8,13 @@ namespace Exercise_2B_Chapter_16
 {
     struct KeyValue
     {
-        public string Key { get; }
-        public object Value { get; }
+        public readonly string key;
+        public readonly object value;
 
-        KeyValue(string key, object value)
+        public KeyValue (string key, object value)
         {
-        
+            this.key = key;
+            this.value = value;
         }
     }
 }
