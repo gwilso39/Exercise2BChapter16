@@ -9,9 +9,9 @@ namespace Exercise_2B_Chapter_16
     class MyDictionary
     {
         private KeyValue[] kv = new KeyValue[32];
-        private int storedValues;
+        private int storedValues = 0;
 
-        public int this[string key]
+        public object this[string key]
         {
                 //The `get` property should search the array for the given key 
                 //and return the associated value if it exists. If the key does 
@@ -19,10 +19,12 @@ namespace Exercise_2B_Chapter_16
 
             get
             {
-                int i = Array.IndexOf(this.kv,key);
-                if (kv[i].key == key)
+                for (int i = 0; i < storedValues; i++)
                 {
-                    return kv[i].value;
+                    if (kv[i].key == key)
+                    {
+                        return kv[i].value;
+                    }
                 }
                 throw new KeyNotFoundException("Couldn't find this key");
             }
@@ -33,15 +35,22 @@ namespace Exercise_2B_Chapter_16
                 //and replace the KeyValue with a `new KeyValue(...)` if it exists. 
                 //If the key does not exist, it should be added as a `new KeyValue(...)`.
 
-                //??foreach value in kv[]
+                bool found = false;
 
-                int i = Array.IndexOf(this.kv, key);
-                if (kv[i].key == key)
+                for (int i = 0; i < storedValues; i++)
                 {
-                    kv[i].value = new value;
+                    if (kv[i].key == key)
+                    {
+                        found = true;
+
+                        kv[i] = new KeyValue(key, value);
+                    }
                 }
-                kv[i].key = key;
-                kv[i].value = value;
+
+                if (!found)
+                {
+                    kv[storedValues++] = new KeyValue(key, value);
+                }
             }
         }
     }
