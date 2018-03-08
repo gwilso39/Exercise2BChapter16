@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Exercise_2B_Chapter_16
 {
-    class MyDictionary
+    class MyDictionary<T>
     {
-        private KeyValue[] kv = new KeyValue[32];
+
+        public KeyValue<T>[] kv = new KeyValue<T>[32];
         private int storedValues = 0;
 
-        public object this[string key]
+        public T this[string key]
         {
                 //The `get` property should search the array for the given key 
                 //and return the associated value if it exists. If the key does 
@@ -43,13 +44,13 @@ namespace Exercise_2B_Chapter_16
                     {
                         found = true;
 
-                        kv[i] = new KeyValue(key, value);
+                        kv[i] = new KeyValue<T>(key, value);
                     }
                 }
 
                 if (!found)
                 {
-                    kv[storedValues++] = new KeyValue(key, value);
+                    kv[storedValues++] = new KeyValue<T>(key, value);
                 }
             }
         }

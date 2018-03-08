@@ -10,7 +10,7 @@ namespace Exercise_2B_Chapter_16
     {
         static void Main(string[] args)
         {
-            var d = new MyDictionary();
+            var d = new MyDictionary<Object>();
 
             try
             {
